@@ -1,6 +1,6 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Wed, 12 Jul 2023 11:57:24 GMT
+ * Last updated on: Fri, 14 Jul 2023 17:14:46 GMT
  */
 
 import { MapperImpl } from '@alien-worlds/api-core';
@@ -66,7 +66,7 @@ export class ProposeMongoMapper
       requested?.map(value => new PermissionLevelMongoMapper().toEntity(value)) || [],
       dac_id || '',
       metadata?.map(value => new PairMongoMapper().toEntity(value)) || [],
-      new TransactionMongoMapper().toEntity(trx),
+      trx ? new TransactionMongoMapper().toEntity(trx) : Transaction.getDefault(),
       _id instanceof MongoDB.ObjectId ? _id.toString() : undefined,
       rest
     );
@@ -99,7 +99,7 @@ export class ProposeRawMapper
       requested?.map(value => new PermissionLevelRawMapper().toEntity(value)) || [],
       dac_id || '',
       metadata?.map(value => new PairRawMapper().toEntity(value)) || [],
-      new TransactionRawMapper().toEntity(trx),
+      trx ? new TransactionRawMapper().toEntity(trx) : Transaction.getDefault(),
       undefined,
       rest
     );

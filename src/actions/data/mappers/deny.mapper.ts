@@ -1,6 +1,6 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Wed, 12 Jul 2023 11:57:24 GMT
+ * Last updated on: Fri, 14 Jul 2023 17:14:46 GMT
  */
 
 import { MapperImpl } from '@alien-worlds/api-core';
@@ -44,7 +44,7 @@ export class DenyMongoMapper
 
     return Deny.create(
       proposal_name || '',
-      new PermissionLevelMongoMapper().toEntity(level),
+      level ? new PermissionLevelMongoMapper().toEntity(level) : PermissionLevel.getDefault(),
       dac_id || '',
       _id instanceof MongoDB.ObjectId ? _id.toString() : undefined,
       rest
@@ -71,7 +71,7 @@ export class DenyRawMapper
 
     return Deny.create(
       proposal_name || '',
-      new PermissionLevelRawMapper().toEntity(level),
+      level ? new PermissionLevelRawMapper().toEntity(level) : PermissionLevel.getDefault(),
       dac_id || '',
       undefined,
       rest

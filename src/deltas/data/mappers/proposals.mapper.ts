@@ -1,6 +1,6 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Wed, 12 Jul 2023 11:57:24 GMT
+ * Last updated on: Fri, 14 Jul 2023 17:14:46 GMT
  */
 
 import { MapperImpl } from '@alien-worlds/api-core';
@@ -76,7 +76,7 @@ export class ProposalsMongoMapper
       id.toString() || '0',
       proposal_name || '',
       proposer || '',
-      new BytesMongoMapper().toEntity(packed_transaction),
+      packed_transaction ? new BytesMongoMapper().toEntity(packed_transaction) : Bytes.getDefault(),
       earliest_exec_time || new Date(0),
       modified_date || new Date(0),
       state || 0,
@@ -113,7 +113,7 @@ export class ProposalsRawMapper
       id.toString() || '0',
       proposal_name || '',
       proposer || '',
-      new BytesRawMapper().toEntity(packed_transaction),
+      packed_transaction ? new BytesRawMapper().toEntity(packed_transaction) : Bytes.getDefault(),
       earliest_exec_time || new Date(0),
       modified_date || new Date(0),
       state || 0,

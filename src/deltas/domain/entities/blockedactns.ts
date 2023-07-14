@@ -1,9 +1,9 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Wed, 12 Jul 2023 11:57:24 GMT
+ * Last updated on: Fri, 14 Jul 2023 17:14:46 GMT
  */
 
-import { Entity, UnknownObject } from '@alien-worlds/api-core';
+import { Entity, UnknownObject } from "@alien-worlds/api-core";
 
 /**
  * Represents a `Blockedactns` object.
@@ -25,14 +25,15 @@ export class Blockedactns implements Entity {
   public constructor(
     public id: string,
     public account: string,
-    public action: string
+    public action: string,
+    
   ) {}
 
   public rest?: UnknownObject;
 
   /**
    * Converts the current instance of the `Blockedactns` class to a JSON object.
-   *
+   * 
    * @public
    * @returns {UnknownObject} The JSON representation of the instance.
    */
@@ -58,16 +59,25 @@ export class Blockedactns implements Entity {
     id: string,
     account: string,
     action: string,
-
+    
     rest?: UnknownObject
   ): Blockedactns {
-    const entity = new Blockedactns(id, account, action);
+    const entity = new Blockedactns(
+      id,
+      account,
+      action,
+      
+    );
     entity.rest = rest;
 
     return entity;
   }
 
   public static getDefault(): Blockedactns {
-    return new Blockedactns('0', '', '');
+    return new Blockedactns('0',
+      '',
+      '',
+    );
   }
 }
+
