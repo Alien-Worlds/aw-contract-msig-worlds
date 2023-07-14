@@ -1,6 +1,6 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Fri, 14 Jul 2023 17:14:46 GMT
+ * Last updated on: Fri, 14 Jul 2023 17:53:34 GMT
  */
 
 
@@ -32,7 +32,7 @@ import { ExecMongoMapper, ExecRawMapper } from "./exec.mapper";
 import { InvalidateMongoMapper, InvalidateRawMapper } from "./invalidate.mapper";
 import { ProposeMongoMapper, ProposeRawMapper } from "./propose.mapper";
 import { UnapproveMongoMapper, UnapproveRawMapper } from "./unapprove.mapper";
-import { MongoDB } from '@alien-worlds/storage-mongodb';
+import { MongoDB, MongoMapper } from '@alien-worlds/storage-mongodb';
 import { DataEntityType } from '../../domain/entities/msig-worlds-action';
 import { 
   MsigWorldsActionMongoModel,
@@ -62,7 +62,7 @@ import { MsigWorldsActionName } from '../../domain/enums';
 
 // Mongo Mapper
 export class MsigWorldsActionMongoMapper
-  extends MapperImpl<ContractAction<DataEntityType>, MsigWorldsActionMongoModel>
+  extends MongoMapper<ContractAction<DataEntityType>, MsigWorldsActionMongoModel>
 {
   public fromEntity(
     entity: ContractAction<DataEntityType>

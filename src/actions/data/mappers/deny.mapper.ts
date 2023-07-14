@@ -1,17 +1,17 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Fri, 14 Jul 2023 17:14:46 GMT
+ * Last updated on: Fri, 14 Jul 2023 17:53:34 GMT
  */
 
 import { MapperImpl } from '@alien-worlds/api-core';
-import { MongoDB } from '@alien-worlds/storage-mongodb';
+import { MongoDB, MongoMapper } from '@alien-worlds/storage-mongodb';
 import { PermissionLevel, PermissionLevelMongoMapper, PermissionLevelRawMapper } from '@alien-worlds/eosio-contract-types';
 import { Deny  } from "../../domain/entities";
 import { DenyMongoModel, DenyRawModel  } from "../dtos/deny.dto";
 
 // Mongo Mappers
 export class DenyMongoMapper
-  extends MapperImpl<Deny, DenyMongoModel>
+  extends MongoMapper<Deny, DenyMongoModel>
 {
   constructor() {
     super();

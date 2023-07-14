@@ -1,17 +1,17 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Fri, 14 Jul 2023 17:14:46 GMT
+ * Last updated on: Fri, 14 Jul 2023 17:53:34 GMT
  */
 
 import { MapperImpl } from '@alien-worlds/api-core';
-import { MongoDB } from '@alien-worlds/storage-mongodb';
+import { MongoDB, MongoMapper } from '@alien-worlds/storage-mongodb';
 import { PermissionLevel, PermissionLevelMongoMapper, PermissionLevelRawMapper } from '@alien-worlds/eosio-contract-types';
 import { Approvals,  Approval  } from "../../domain/entities";
 import { ApprovalsMongoModel, ApprovalsRawModel,  ApprovalMongoModel, ApprovalRawModel  } from "../dtos/approvals.dto";
 
 // Mongo Mappers
 export class ApprovalsMongoMapper
-  extends MapperImpl<Approvals, ApprovalsMongoModel>
+  extends MongoMapper<Approvals, ApprovalsMongoModel>
 {
   constructor() {
     super();
@@ -53,7 +53,7 @@ export class ApprovalsMongoMapper
 }
 
 export class ApprovalMongoMapper
-  extends MapperImpl<Approval, ApprovalMongoModel>
+  extends MongoMapper<Approval, ApprovalMongoModel>
 {
   constructor() {
     super();

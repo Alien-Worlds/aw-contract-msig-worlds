@@ -1,16 +1,16 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Fri, 14 Jul 2023 17:14:46 GMT
+ * Last updated on: Fri, 14 Jul 2023 17:53:34 GMT
  */
 
 import { MapperImpl } from '@alien-worlds/api-core';
-import { MongoDB } from '@alien-worlds/storage-mongodb';
+import { MongoDB, MongoMapper } from '@alien-worlds/storage-mongodb';
 import { Checkauth  } from "../../domain/entities";
 import { CheckauthMongoModel, CheckauthRawModel  } from "../dtos/checkauth.dto";
 
 // Mongo Mappers
 export class CheckauthMongoMapper
-  extends MapperImpl<Checkauth, CheckauthMongoModel>
+  extends MongoMapper<Checkauth, CheckauthMongoModel>
 {
   constructor() {
     super();

@@ -1,16 +1,16 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Fri, 14 Jul 2023 17:14:46 GMT
+ * Last updated on: Fri, 14 Jul 2023 17:53:34 GMT
  */
 
 import { MapperImpl } from '@alien-worlds/api-core';
-import { MongoDB } from '@alien-worlds/storage-mongodb';
+import { MongoDB, MongoMapper } from '@alien-worlds/storage-mongodb';
 import { Exec  } from "../../domain/entities";
 import { ExecMongoModel, ExecRawModel  } from "../dtos/exec.dto";
 
 // Mongo Mappers
 export class ExecMongoMapper
-  extends MapperImpl<Exec, ExecMongoModel>
+  extends MongoMapper<Exec, ExecMongoModel>
 {
   constructor() {
     super();

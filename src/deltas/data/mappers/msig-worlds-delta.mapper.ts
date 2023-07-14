@@ -1,6 +1,6 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Fri, 14 Jul 2023 17:14:46 GMT
+ * Last updated on: Fri, 14 Jul 2023 17:53:34 GMT
  */
 
 
@@ -11,7 +11,7 @@ import {
   Proposals,
 } from '../../domain/entities';
 import { ContractDelta, MapperImpl, parseToBigInt } from '@alien-worlds/api-core';
-import { MongoDB } from '@alien-worlds/storage-mongodb';
+import { MongoDB, MongoMapper } from '@alien-worlds/storage-mongodb';
 import { DataEntityType } from '../../domain/entities/msig-worlds-delta';
 import { MsigWorldsDeltaMongoModel, MsigWorldsDeltaRawModel } from '../dtos';
 import { MsigWorldsTableName } from '../../domain/enums';
@@ -22,7 +22,7 @@ import { ProposalsMongoMapper, ProposalsRawMapper } from "./proposals.mapper";
 
 // Mongo Mapper
 export class MsigWorldsDeltaMongoMapper
-  extends MapperImpl<ContractDelta<DataEntityType>, MsigWorldsDeltaMongoModel>
+  extends MongoMapper<ContractDelta<DataEntityType>, MsigWorldsDeltaMongoModel>
 {
   public fromEntity(
     entity: ContractDelta<DataEntityType>
