@@ -8,10 +8,10 @@ _The code within this package is auto-generated using our tool, [AlienGen](https
 
 This package is dependent on the following packages:
 
-- [@alien-worlds/api-core](https://github.com/Alien-Worlds/api-core)
-- [@alien-worlds/eos](https://github.com/Alien-Worlds/eos)
-- [@alien-worlds/eosio-contract-types](https://github.com/Alien-Worlds/eosio-contract-types)
-- [@alien-worlds/storage-mongodb](https://github.com/Alien-Worlds/storage-mongodb)
+- [@alien-worlds/aw-core](https://github.com/Alien-Worlds/api-core)
+- [@alien-worlds/aw-antelope](https://github.com/Alien-Worlds/eos)
+- [@alien-worlds/aw-antelope](https://github.com/Alien-Worlds/eosio-contract-types)
+- [@alien-worlds/aw-storage-mongodb](https://github.com/Alien-Worlds/storage-mongodb)
 
 ## Table of Contents
 

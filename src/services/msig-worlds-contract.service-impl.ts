@@ -3,49 +3,49 @@
  * Last updated on: Fri, 14 Jul 2023 19:22:17 GMT
  */
 
-import { 
+import {
   ApprovalsRawModel,
   BlockedactnsRawModel,
   InvalsRawModel,
   ProposalsRawModel,
 } from '../deltas/data/dtos';
-import { 
-  EosRpcSourceImpl,
-  EosSmartContractServiceImpl,
-} from '@alien-worlds/eos';
+import {
+  AntelopeRpcSourceImpl,
+  AntelopeSmartContractServiceImpl,
+} from '@alien-worlds/aw-antelope';
 
 import { MsigWorldsContractService } from './msig-worlds-contract.service';
-import { GetTableRowsOptions, Result } from '@alien-worlds/api-core';
+import { GetTableRowsOptions, Result } from '@alien-worlds/aw-core';
 
 /**
  * A service class for interacting with the msig.worlds smart contract.
- * 
+ *
  * @class MsigWorldsContractServiceImpl
- * @extends {EosSmartContractServiceImpl}
+ * @extends {AntelopeSmartContractServiceImpl}
  * @implements { MsigWorldsContractService}
-*/
+ */
 export class MsigWorldsContractServiceImpl
-  extends EosSmartContractServiceImpl
-  implements MsigWorldsContractService 
+  extends AntelopeSmartContractServiceImpl
+  implements MsigWorldsContractService
 {
   /**
    * Creates an instance of MsigWorldsContractServiceImpl.
-   * 
+   *
    * @constructor
-   * @param {EosRpcSourceImpl} eosRpcSourceImpl - The EOS RPC source to use for interactions.
+   * @param {AntelopeRpcSourceImpl} eosRpcSourceImpl - The EOS RPC source to use for interactions.
    * @param {string} serviceUrl - Service Url
    */
-  constructor(eosRpcSourceImpl: EosRpcSourceImpl, serviceUrl: string) {
+  constructor(eosRpcSourceImpl: AntelopeRpcSourceImpl, serviceUrl: string) {
     super(eosRpcSourceImpl, serviceUrl, 'msig.worlds');
   }
 
   /**
-   * A EosSmartContractServiceImpl for the approvals table.
-   * 
-   * @type {EosSmartContractServiceImpl}
-   * @param {GetTableRowsOptions} options 
+   * A AntelopeSmartContractServiceImpl for the approvals table.
+   *
+   * @type {AntelopeSmartContractServiceImpl}
+   * @param {GetTableRowsOptions} options
    */
-  public async fetchApprovals (
+  public async fetchApprovals(
     options?: GetTableRowsOptions
   ): Promise<Result<ApprovalsRawModel[], Error>> {
     const table_key = 'proposal_name';
@@ -61,12 +61,12 @@ export class MsigWorldsContractServiceImpl
       : await this.getAll<ApprovalsRawModel>(table_key, tableRowOptions);
   }
   /**
-   * A EosSmartContractServiceImpl for the blockedactns table.
-   * 
-   * @type {EosSmartContractServiceImpl}
-   * @param {GetTableRowsOptions} options 
+   * A AntelopeSmartContractServiceImpl for the blockedactns table.
+   *
+   * @type {AntelopeSmartContractServiceImpl}
+   * @param {GetTableRowsOptions} options
    */
-  public async fetchBlockedactns (
+  public async fetchBlockedactns(
     options?: GetTableRowsOptions
   ): Promise<Result<BlockedactnsRawModel[], Error>> {
     const table_key = 'id';
@@ -82,12 +82,12 @@ export class MsigWorldsContractServiceImpl
       : await this.getAll<BlockedactnsRawModel>(table_key, tableRowOptions);
   }
   /**
-   * A EosSmartContractServiceImpl for the invals table.
-   * 
-   * @type {EosSmartContractServiceImpl}
-   * @param {GetTableRowsOptions} options 
+   * A AntelopeSmartContractServiceImpl for the invals table.
+   *
+   * @type {AntelopeSmartContractServiceImpl}
+   * @param {GetTableRowsOptions} options
    */
-  public async fetchInvals (
+  public async fetchInvals(
     options?: GetTableRowsOptions
   ): Promise<Result<InvalsRawModel[], Error>> {
     const table_key = 'account';
@@ -103,12 +103,12 @@ export class MsigWorldsContractServiceImpl
       : await this.getAll<InvalsRawModel>(table_key, tableRowOptions);
   }
   /**
-   * A EosSmartContractServiceImpl for the proposals table.
-   * 
-   * @type {EosSmartContractServiceImpl}
-   * @param {GetTableRowsOptions} options 
+   * A AntelopeSmartContractServiceImpl for the proposals table.
+   *
+   * @type {AntelopeSmartContractServiceImpl}
+   * @param {GetTableRowsOptions} options
    */
-  public async fetchProposals (
+  public async fetchProposals(
     options?: GetTableRowsOptions
   ): Promise<Result<ProposalsRawModel[], Error>> {
     const table_key = 'id';

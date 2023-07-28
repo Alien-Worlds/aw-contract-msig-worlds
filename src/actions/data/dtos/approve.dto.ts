@@ -3,8 +3,11 @@
  * Last updated on: Fri, 14 Jul 2023 19:22:17 GMT
  */
 
-import { MongoDB } from '@alien-worlds/storage-mongodb';
-import { PermissionLevelMongoModel, PermissionLevelRawModel } from '@alien-worlds/eosio-contract-types';
+import { MongoDB } from '@alien-worlds/aw-storage-mongodb';
+import {
+  PermissionLevelMongoModel,
+  PermissionLevelRawModel,
+} from '@alien-worlds/aw-antelope';
 
 /**
  * MongoDB Model(s) - Types representing data from MongoDB
@@ -36,4 +39,3 @@ export type ApproveRawModel = {
   proposal_hash?: string;
   [key: string]: unknown;
 };
-

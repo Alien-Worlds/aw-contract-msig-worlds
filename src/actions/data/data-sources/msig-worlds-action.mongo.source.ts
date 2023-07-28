@@ -3,7 +3,10 @@
  * Last updated on: Fri, 14 Jul 2023 19:22:17 GMT
  */
 
-import { MongoSource, MongoCollectionSource } from '@alien-worlds/storage-mongodb';
+import {
+  MongoSource,
+  MongoCollectionSource,
+} from '@alien-worlds/aw-storage-mongodb';
 import { MsigWorldsActionMongoModel } from '../dtos';
 
 /**

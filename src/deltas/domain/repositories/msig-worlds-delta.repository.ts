@@ -3,12 +3,12 @@
  * Last updated on: Fri, 14 Jul 2023 19:22:17 GMT
  */
 
-import { 
-  ContractDelta, 
-  ContractDeltaModel, 
-  Repository, 
-  injectable, 
-} from '@alien-worlds/api-core';
+import {
+  ContractDelta,
+  ContractDeltaModel,
+  Repository,
+  injectable,
+} from '@alien-worlds/aw-core';
 
 import { DataDocumentType } from '../../data/dtos/msig-worlds-delta.dto';
 import { DataEntityType } from '../../domain/entities/msig-worlds-delta';

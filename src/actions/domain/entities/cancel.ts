@@ -3,7 +3,7 @@
  * Last updated on: Fri, 14 Jul 2023 19:22:17 GMT
  */
 
-import { Entity, UnknownObject } from "@alien-worlds/api-core";
+import { Entity, UnknownObject } from '@alien-worlds/aw-core';
 
 /**
  * Represents a `Cancel` object.
@@ -26,14 +26,14 @@ export class Cancel implements Entity {
     public proposalName: string,
     public canceler: string,
     public dacId: string,
-    public id?: string,
+    public id?: string
   ) {}
 
   public rest?: UnknownObject;
 
   /**
    * Converts the current instance of the `Cancel` class to a JSON object.
-   * 
+   *
    * @public
    * @returns {UnknownObject} The JSON representation of the instance.
    */
@@ -62,23 +62,13 @@ export class Cancel implements Entity {
     id?: string,
     rest?: UnknownObject
   ): Cancel {
-    const entity = new Cancel(
-      proposalName,
-      canceler,
-      dacId,
-      id,
-    );
+    const entity = new Cancel(proposalName, canceler, dacId, id);
     entity.rest = rest;
 
     return entity;
   }
 
   public static getDefault(): Cancel {
-    return new Cancel(
-      '',
-      '',
-      '',
-    );
+    return new Cancel('', '', '');
   }
 }
-

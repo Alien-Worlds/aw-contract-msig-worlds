@@ -3,41 +3,44 @@
  * Last updated on: Fri, 14 Jul 2023 19:22:17 GMT
  */
 
-import { MapperImpl } from '@alien-worlds/api-core';
-import { MongoDB, MongoMapper } from '@alien-worlds/storage-mongodb';
-import { Blockedactns  } from "../../domain/entities";
-import { BlockedactnsMongoModel, BlockedactnsRawModel  } from "../dtos/blockedactns.dto";
+import { MapperImpl } from '@alien-worlds/aw-core';
+import { MongoDB, MongoMapper } from '@alien-worlds/aw-storage-mongodb';
+import { Blockedactns } from '../../domain/entities';
+import {
+  BlockedactnsMongoModel,
+  BlockedactnsRawModel,
+} from '../dtos/blockedactns.dto';
 
 // Mongo Mappers
-export class BlockedactnsMongoMapper
-  extends MongoMapper<Blockedactns, BlockedactnsMongoModel>
-{
+export class BlockedactnsMongoMapper extends MongoMapper<
+  Blockedactns,
+  BlockedactnsMongoModel
+> {
   constructor() {
     super();
 
-    this.mappingFromEntity.set('id', { 
-      key: 'id', 
+    this.mappingFromEntity.set('id', {
+      key: 'id',
       mapper: (value: number) => value,
     });
 
-    this.mappingFromEntity.set('account', { 
-      key: 'account', 
+    this.mappingFromEntity.set('account', {
+      key: 'account',
       mapper: (value: string) => value,
     });
 
-    this.mappingFromEntity.set('action', { 
-      key: 'action', 
+    this.mappingFromEntity.set('action', {
+      key: 'action',
       mapper: (value: string) => value,
     });
-
   }
 
   public toEntity(mongoModel: BlockedactnsMongoModel): Blockedactns {
-    const { 
+    const {
       id,
       account,
       action,
-      
+
       ...rest
     } = mongoModel;
 
@@ -45,36 +48,30 @@ export class BlockedactnsMongoMapper
       id.toString() || '0',
       account || '',
       action || '',
-      
+
       rest
     );
   }
 }
 
-
 // Raw mappers
-export class BlockedactnsRawMapper
-  extends MapperImpl<Blockedactns, BlockedactnsRawModel>
-{
+export class BlockedactnsRawMapper extends MapperImpl<
+  Blockedactns,
+  BlockedactnsRawModel
+> {
   public fromEntity(entity: Blockedactns): BlockedactnsRawModel {
     throw new Error('Method not implemented');
   }
 
   public toEntity(rawModel: BlockedactnsRawModel): Blockedactns {
-    const { 
-      id,
-      account,
-      action,
-      ...rest
-    } = rawModel;
+    const { id, account, action, ...rest } = rawModel;
 
     return Blockedactns.create(
       id.toString() || '0',
       account || '',
       action || '',
-      
+
       rest
     );
   }
 }
-

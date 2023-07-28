@@ -3,22 +3,22 @@
  * Last updated on: Fri, 14 Jul 2023 19:22:17 GMT
  */
 
-import { Container, RepositoryImpl } from '@alien-worlds/api-core';
-import { 
+import { Container, RepositoryImpl } from '@alien-worlds/aw-core';
+import {
   MongoConfig,
-  MongoQueryBuilders, 
+  MongoQueryBuilders,
   MongoSource,
-} from '@alien-worlds/storage-mongodb';
+} from '@alien-worlds/aw-storage-mongodb';
 
 import { MsigWorldsActionMongoMapper } from './actions/data/mappers';
 import { MsigWorldsActionMongoSource } from './actions/data/data-sources';
 import { MsigWorldsActionRepository } from './actions/domain/repositories';
-import { MsigWorldsContractService } from "./services/msig-worlds-contract.service";
-import { MsigWorldsContractServiceImpl } from "./services/msig-worlds-contract.service-impl";
+import { MsigWorldsContractService } from './services/msig-worlds-contract.service';
+import { MsigWorldsContractServiceImpl } from './services/msig-worlds-contract.service-impl';
 import { MsigWorldsDeltaMongoMapper } from './deltas/data/mappers';
 import { MsigWorldsDeltaMongoSource } from './deltas/data/data-sources';
 import { MsigWorldsDeltaRepository } from './deltas/domain/repositories';
-import { EosRpcSourceImpl } from '@alien-worlds/eos';
+import { AntelopeRpcSourceImpl } from '@alien-worlds/aw-antelope';
 
 export const setupMsigWorldsActionRepository = async (
   mongo: MongoSource | MongoConfig,
@@ -32,7 +32,7 @@ export const setupMsigWorldsActionRepository = async (
   }
 
   const mapper = new MsigWorldsActionMongoMapper();
-  
+
   const repository = new RepositoryImpl(
     new MsigWorldsActionMongoSource(mongoSource),
     mapper,
@@ -60,7 +60,7 @@ export const setupMsigWorldsDeltaRepository = async (
   }
 
   const mapper = new MsigWorldsDeltaMongoMapper();
-  
+
   const repository = new RepositoryImpl(
     new MsigWorldsDeltaMongoSource(mongoSource),
     mapper,
@@ -77,7 +77,7 @@ export const setupMsigWorldsDeltaRepository = async (
 };
 
 export const setupMsigWorldsContractService = (
-  eosRpcSourceImpl: EosRpcSourceImpl,
+  eosRpcSourceImpl: AntelopeRpcSourceImpl,
   serviceUrl: string,
   container?: Container
 ): MsigWorldsContractService => {

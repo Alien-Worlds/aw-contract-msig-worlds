@@ -3,7 +3,7 @@
  * Last updated on: Fri, 14 Jul 2023 19:22:17 GMT
  */
 
-import { MongoDB } from '@alien-worlds/storage-mongodb';
+import { MongoDB } from '@alien-worlds/aw-storage-mongodb';
 
 import { ApproveMongoModel, ApproveRawModel } from './approve.dto';
 import { BlockactionMongoModel, BlockactionRawModel } from './blockaction.dto';
@@ -66,4 +66,3 @@ export type MsigWorldsActionRawModel = {
   data: DataRawType;
   [key: string]: unknown;
 };
-

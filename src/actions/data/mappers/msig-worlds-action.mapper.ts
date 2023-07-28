@@ -3,8 +3,7 @@
  * Last updated on: Fri, 14 Jul 2023 19:22:17 GMT
  */
 
-
-import { 
+import {
   Approve,
   Blockaction,
   Cancel,
@@ -16,25 +15,31 @@ import {
   Propose,
   Unapprove,
 } from '../../domain/entities';
-import { 
-  ContractAction, 
-  MapperImpl, 
-  parseToBigInt 
-} from '@alien-worlds/api-core';
+import {
+  ContractAction,
+  MapperImpl,
+  parseToBigInt,
+} from '@alien-worlds/aw-core';
 
-import { ApproveMongoMapper, ApproveRawMapper } from "./approve.mapper";
-import { BlockactionMongoMapper, BlockactionRawMapper } from "./blockaction.mapper";
-import { CancelMongoMapper, CancelRawMapper } from "./cancel.mapper";
-import { CheckauthMongoMapper, CheckauthRawMapper } from "./checkauth.mapper";
-import { CleanupMongoMapper, CleanupRawMapper } from "./cleanup.mapper";
-import { DenyMongoMapper, DenyRawMapper } from "./deny.mapper";
-import { ExecMongoMapper, ExecRawMapper } from "./exec.mapper";
-import { InvalidateMongoMapper, InvalidateRawMapper } from "./invalidate.mapper";
-import { ProposeMongoMapper, ProposeRawMapper } from "./propose.mapper";
-import { UnapproveMongoMapper, UnapproveRawMapper } from "./unapprove.mapper";
-import { MongoDB, MongoMapper } from '@alien-worlds/storage-mongodb';
+import { ApproveMongoMapper, ApproveRawMapper } from './approve.mapper';
+import {
+  BlockactionMongoMapper,
+  BlockactionRawMapper,
+} from './blockaction.mapper';
+import { CancelMongoMapper, CancelRawMapper } from './cancel.mapper';
+import { CheckauthMongoMapper, CheckauthRawMapper } from './checkauth.mapper';
+import { CleanupMongoMapper, CleanupRawMapper } from './cleanup.mapper';
+import { DenyMongoMapper, DenyRawMapper } from './deny.mapper';
+import { ExecMongoMapper, ExecRawMapper } from './exec.mapper';
+import {
+  InvalidateMongoMapper,
+  InvalidateRawMapper,
+} from './invalidate.mapper';
+import { ProposeMongoMapper, ProposeRawMapper } from './propose.mapper';
+import { UnapproveMongoMapper, UnapproveRawMapper } from './unapprove.mapper';
+import { MongoDB, MongoMapper } from '@alien-worlds/aw-storage-mongodb';
 import { DataEntityType } from '../../domain/entities/msig-worlds-action';
-import { 
+import {
   MsigWorldsActionMongoModel,
   MsigWorldsActionRawModel,
   ApproveMongoModel,
@@ -61,9 +66,10 @@ import {
 import { MsigWorldsActionName } from '../../domain/enums';
 
 // Mongo Mapper
-export class MsigWorldsActionMongoMapper
-  extends MongoMapper<ContractAction<DataEntityType>, MsigWorldsActionMongoModel>
-{
+export class MsigWorldsActionMongoMapper extends MongoMapper<
+  ContractAction<DataEntityType>,
+  MsigWorldsActionMongoModel
+> {
   public fromEntity(
     entity: ContractAction<DataEntityType>
   ): MsigWorldsActionMongoModel {
@@ -80,9 +86,7 @@ export class MsigWorldsActionMongoMapper
         );
         break;
       case MsigWorldsActionName.Cancel:
-        entityData = new CancelMongoMapper().fromEntity(
-          entity.data as Cancel
-        );
+        entityData = new CancelMongoMapper().fromEntity(entity.data as Cancel);
         break;
       case MsigWorldsActionName.Checkauth:
         entityData = new CheckauthMongoMapper().fromEntity(
@@ -95,14 +99,10 @@ export class MsigWorldsActionMongoMapper
         );
         break;
       case MsigWorldsActionName.Deny:
-        entityData = new DenyMongoMapper().fromEntity(
-          entity.data as Deny
-        );
+        entityData = new DenyMongoMapper().fromEntity(entity.data as Deny);
         break;
       case MsigWorldsActionName.Exec:
-        entityData = new ExecMongoMapper().fromEntity(
-          entity.data as Exec
-        );
+        entityData = new ExecMongoMapper().fromEntity(entity.data as Exec);
         break;
       case MsigWorldsActionName.Invalidate:
         entityData = new InvalidateMongoMapper().fromEntity(
@@ -135,7 +135,7 @@ export class MsigWorldsActionMongoMapper
     };
 
     if (entity.id && MongoDB.ObjectId.isValid(entity.id)) {
-      model._id =  new MongoDB.ObjectId(entity.id);
+      model._id = new MongoDB.ObjectId(entity.id);
     }
 
     return model;
@@ -217,7 +217,7 @@ export class MsigWorldsActionMongoMapper
       parseToBigInt(global_sequence),
       parseToBigInt(receiver_sequence),
       trx_id,
-      data,
+      data
     );
   }
 }
@@ -249,9 +249,7 @@ export class MsigWorldsActionProcessorTaskMapper extends MapperImpl<
         );
         break;
       case MsigWorldsActionName.Cancel:
-        data = new CancelRawMapper().toEntity(
-          rawModel.data as CancelRawModel
-        );
+        data = new CancelRawMapper().toEntity(rawModel.data as CancelRawModel);
         break;
       case MsigWorldsActionName.Checkauth:
         data = new CheckauthRawMapper().toEntity(
@@ -264,14 +262,10 @@ export class MsigWorldsActionProcessorTaskMapper extends MapperImpl<
         );
         break;
       case MsigWorldsActionName.Deny:
-        data = new DenyRawMapper().toEntity(
-          rawModel.data as DenyRawModel
-        );
+        data = new DenyRawMapper().toEntity(rawModel.data as DenyRawModel);
         break;
       case MsigWorldsActionName.Exec:
-        data = new ExecRawMapper().toEntity(
-          rawModel.data as ExecRawModel
-        );
+        data = new ExecRawMapper().toEntity(rawModel.data as ExecRawModel);
         break;
       case MsigWorldsActionName.Invalidate:
         data = new InvalidateRawMapper().toEntity(

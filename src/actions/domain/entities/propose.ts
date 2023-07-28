@@ -3,8 +3,8 @@
  * Last updated on: Fri, 14 Jul 2023 19:22:17 GMT
  */
 
-import { Entity, UnknownObject } from "@alien-worlds/api-core";
-import { PermissionLevel, Pair, Transaction } from '@alien-worlds/eosio-contract-types';
+import { Entity, UnknownObject } from '@alien-worlds/aw-core';
+import { PermissionLevel, Pair, Transaction } from '@alien-worlds/aw-antelope';
 
 /**
  * Represents a `Propose` object.
@@ -33,14 +33,14 @@ export class Propose implements Entity {
     public dacId: string,
     public metadata: Pair[],
     public trx: Transaction,
-    public id?: string,
+    public id?: string
   ) {}
 
   public rest?: UnknownObject;
 
   /**
    * Converts the current instance of the `Propose` class to a JSON object.
-   * 
+   *
    * @public
    * @returns {UnknownObject} The JSON representation of the instance.
    */
@@ -85,7 +85,7 @@ export class Propose implements Entity {
       dacId,
       metadata,
       trx,
-      id,
+      id
     );
     entity.rest = rest;
 
@@ -93,16 +93,6 @@ export class Propose implements Entity {
   }
 
   public static getDefault(): Propose {
-    return new Propose(
-      '',
-      '',
-        []
-,
-      '',
-        []
-,
-      Transaction.getDefault(),
-    );
+    return new Propose('', '', [], '', [], Transaction.getDefault());
   }
 }
-

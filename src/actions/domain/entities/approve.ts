@@ -3,8 +3,8 @@
  * Last updated on: Fri, 14 Jul 2023 19:22:17 GMT
  */
 
-import { Entity, UnknownObject } from "@alien-worlds/api-core";
-import { PermissionLevel } from '@alien-worlds/eosio-contract-types';
+import { Entity, UnknownObject } from '@alien-worlds/aw-core';
+import { PermissionLevel } from '@alien-worlds/aw-antelope';
 
 /**
  * Represents a `Approve` object.
@@ -29,14 +29,14 @@ export class Approve implements Entity {
     public level: PermissionLevel,
     public dacId: string,
     public proposalHash: string,
-    public id?: string,
+    public id?: string
   ) {}
 
   public rest?: UnknownObject;
 
   /**
    * Converts the current instance of the `Approve` class to a JSON object.
-   * 
+   *
    * @public
    * @returns {UnknownObject} The JSON representation of the instance.
    */
@@ -68,25 +68,13 @@ export class Approve implements Entity {
     id?: string,
     rest?: UnknownObject
   ): Approve {
-    const entity = new Approve(
-      proposalName,
-      level,
-      dacId,
-      proposalHash,
-      id,
-    );
+    const entity = new Approve(proposalName, level, dacId, proposalHash, id);
     entity.rest = rest;
 
     return entity;
   }
 
   public static getDefault(): Approve {
-    return new Approve(
-      '',
-      PermissionLevel.getDefault(),
-      '',
-      '',
-    );
+    return new Approve('', PermissionLevel.getDefault(), '', '');
   }
 }
-

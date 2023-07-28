@@ -7,9 +7,9 @@ import {
   GetTableRowsOptions,
   Result,
   SmartContractService,
-} from '@alien-worlds/api-core';
+} from '@alien-worlds/aw-core';
 
-import { 
+import {
   ApprovalsRawModel,
   BlockedactnsRawModel,
   InvalsRawModel,

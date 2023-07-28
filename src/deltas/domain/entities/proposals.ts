@@ -3,8 +3,8 @@
  * Last updated on: Fri, 14 Jul 2023 19:22:17 GMT
  */
 
-import { Entity, UnknownObject } from "@alien-worlds/api-core";
-import { Bytes, Pair } from '@alien-worlds/eosio-contract-types';
+import { Entity, UnknownObject } from '@alien-worlds/aw-core';
+import { Bytes, Pair } from '@alien-worlds/aw-antelope';
 
 /**
  * Represents a `Proposals` object.
@@ -36,15 +36,14 @@ export class Proposals implements Entity {
     public earliestExecTime: Date,
     public modifiedDate: Date,
     public state: number,
-    public metadata: Pair[],
-    
+    public metadata: Pair[]
   ) {}
 
   public rest?: UnknownObject;
 
   /**
    * Converts the current instance of the `Proposals` class to a JSON object.
-   * 
+   *
    * @public
    * @returns {UnknownObject} The JSON representation of the instance.
    */
@@ -85,7 +84,7 @@ export class Proposals implements Entity {
     modifiedDate: Date,
     state: number,
     metadata: Pair[],
-    
+
     rest?: UnknownObject
   ): Proposals {
     const entity = new Proposals(
@@ -96,8 +95,7 @@ export class Proposals implements Entity {
       earliestExecTime,
       modifiedDate,
       state,
-      metadata,
-      
+      metadata
     );
     entity.rest = rest;
 
@@ -105,16 +103,15 @@ export class Proposals implements Entity {
   }
 
   public static getDefault(): Proposals {
-    return new Proposals('0',
+    return new Proposals(
+      '0',
       '',
       '',
       Bytes.getDefault(),
       new Date(0),
       new Date(0),
       0,
-        []
-,
+      []
     );
   }
 }
-

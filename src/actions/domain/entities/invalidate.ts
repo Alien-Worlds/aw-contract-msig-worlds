@@ -3,7 +3,7 @@
  * Last updated on: Fri, 14 Jul 2023 19:22:17 GMT
  */
 
-import { Entity, UnknownObject } from "@alien-worlds/api-core";
+import { Entity, UnknownObject } from '@alien-worlds/aw-core';
 
 /**
  * Represents a `Invalidate` object.
@@ -24,14 +24,14 @@ export class Invalidate implements Entity {
   public constructor(
     public account: string,
     public dacId: string,
-    public id?: string,
+    public id?: string
   ) {}
 
   public rest?: UnknownObject;
 
   /**
    * Converts the current instance of the `Invalidate` class to a JSON object.
-   * 
+   *
    * @public
    * @returns {UnknownObject} The JSON representation of the instance.
    */
@@ -57,21 +57,13 @@ export class Invalidate implements Entity {
     id?: string,
     rest?: UnknownObject
   ): Invalidate {
-    const entity = new Invalidate(
-      account,
-      dacId,
-      id,
-    );
+    const entity = new Invalidate(account, dacId, id);
     entity.rest = rest;
 
     return entity;
   }
 
   public static getDefault(): Invalidate {
-    return new Invalidate(
-      '',
-      '',
-    );
+    return new Invalidate('', '');
   }
 }
-

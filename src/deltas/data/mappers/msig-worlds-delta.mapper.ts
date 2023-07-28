@@ -3,27 +3,34 @@
  * Last updated on: Fri, 14 Jul 2023 19:22:17 GMT
  */
 
-
-import { 
+import {
   Approvals,
   Blockedactns,
   Invals,
   Proposals,
 } from '../../domain/entities';
-import { ContractDelta, MapperImpl, parseToBigInt } from '@alien-worlds/api-core';
-import { MongoDB, MongoMapper } from '@alien-worlds/storage-mongodb';
+import {
+  ContractDelta,
+  MapperImpl,
+  parseToBigInt,
+} from '@alien-worlds/aw-core';
+import { MongoDB, MongoMapper } from '@alien-worlds/aw-storage-mongodb';
 import { DataEntityType } from '../../domain/entities/msig-worlds-delta';
 import { MsigWorldsDeltaMongoModel, MsigWorldsDeltaRawModel } from '../dtos';
 import { MsigWorldsTableName } from '../../domain/enums';
-import { ApprovalsMongoMapper, ApprovalsRawMapper } from "./approvals.mapper";
-import { BlockedactnsMongoMapper, BlockedactnsRawMapper } from "./blockedactns.mapper";
-import { InvalsMongoMapper, InvalsRawMapper } from "./invals.mapper";
-import { ProposalsMongoMapper, ProposalsRawMapper } from "./proposals.mapper";
+import { ApprovalsMongoMapper, ApprovalsRawMapper } from './approvals.mapper';
+import {
+  BlockedactnsMongoMapper,
+  BlockedactnsRawMapper,
+} from './blockedactns.mapper';
+import { InvalsMongoMapper, InvalsRawMapper } from './invals.mapper';
+import { ProposalsMongoMapper, ProposalsRawMapper } from './proposals.mapper';
 
 // Mongo Mapper
-export class MsigWorldsDeltaMongoMapper
-  extends MongoMapper<ContractDelta<DataEntityType>, MsigWorldsDeltaMongoModel>
-{
+export class MsigWorldsDeltaMongoMapper extends MongoMapper<
+  ContractDelta<DataEntityType>,
+  MsigWorldsDeltaMongoModel
+> {
   public fromEntity(
     entity: ContractDelta<DataEntityType>
   ): MsigWorldsDeltaMongoModel {
@@ -40,9 +47,7 @@ export class MsigWorldsDeltaMongoMapper
         );
         break;
       case MsigWorldsTableName.Invals:
-        entityData = new InvalsMongoMapper().fromEntity(
-          entity.data as Invals
-        );
+        entityData = new InvalsMongoMapper().fromEntity(entity.data as Invals);
         break;
       case MsigWorldsTableName.Proposals:
         entityData = new ProposalsMongoMapper().fromEntity(
@@ -64,9 +69,9 @@ export class MsigWorldsDeltaMongoMapper
     };
 
     if (entity.id && MongoDB.ObjectId.isValid(entity.id)) {
-      model._id =  new MongoDB.ObjectId(entity.id);
+      model._id = new MongoDB.ObjectId(entity.id);
     }
-    
+
     return model;
   }
 
@@ -118,8 +123,8 @@ export class MsigWorldsDeltaMongoMapper
 
 // Processor Task Mapper
 export class MsigWorldsDeltaProcessorTaskMapper extends MapperImpl<
-  ContractDelta<DataEntityType, MsigWorldsDeltaRawModel>, 
-    MsigWorldsDeltaRawModel
+  ContractDelta<DataEntityType, MsigWorldsDeltaRawModel>,
+  MsigWorldsDeltaRawModel
 > {
   public fromEntity(
     entity: ContractDelta<DataEntityType, MsigWorldsDeltaRawModel>
@@ -167,7 +172,7 @@ export class MsigWorldsDeltaProcessorTaskMapper extends MapperImpl<
       payer,
       parseToBigInt(primary_key),
       present,
-      block_timestamp,
+      block_timestamp
     );
   }
 }

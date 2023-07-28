@@ -3,8 +3,8 @@
  * Last updated on: Fri, 14 Jul 2023 19:22:17 GMT
  */
 
-import { Entity, UnknownObject } from "@alien-worlds/api-core";
-import { PermissionLevel } from '@alien-worlds/eosio-contract-types';
+import { Entity, UnknownObject } from '@alien-worlds/aw-core';
+import { PermissionLevel } from '@alien-worlds/aw-antelope';
 
 /**
  * Represents a `Approvals` object.
@@ -27,14 +27,14 @@ export class Approvals implements Entity {
     public proposalName: string,
     public requestedApprovals: Approval[],
     public providedApprovals: Approval[],
-    public id?: string,
+    public id?: string
   ) {}
 
   public rest?: UnknownObject;
 
   /**
    * Converts the current instance of the `Approvals` class to a JSON object.
-   * 
+   *
    * @public
    * @returns {UnknownObject} The JSON representation of the instance.
    */
@@ -67,7 +67,7 @@ export class Approvals implements Entity {
       proposalName,
       requestedApprovals,
       providedApprovals,
-      id,
+      id
     );
     entity.rest = rest;
 
@@ -75,13 +75,7 @@ export class Approvals implements Entity {
   }
 
   public static getDefault(): Approvals {
-    return new Approvals(
-      '',
-        []
-,
-        []
-,
-    );
+    return new Approvals('', [], []);
   }
 }
 
@@ -104,14 +98,14 @@ export class Approval implements Entity {
   public constructor(
     public level: PermissionLevel,
     public time: Date,
-    public id?: string,
+    public id?: string
   ) {}
 
   public rest?: UnknownObject;
 
   /**
    * Converts the current instance of the `Approval` class to a JSON object.
-   * 
+   *
    * @public
    * @returns {UnknownObject} The JSON representation of the instance.
    */
@@ -137,21 +131,13 @@ export class Approval implements Entity {
     id?: string,
     rest?: UnknownObject
   ): Approval {
-    const entity = new Approval(
-      level,
-      time,
-      id,
-    );
+    const entity = new Approval(level, time, id);
     entity.rest = rest;
 
     return entity;
   }
 
   public static getDefault(): Approval {
-    return new Approval(
-      PermissionLevel.getDefault(),
-      new Date(0),
-    );
+    return new Approval(PermissionLevel.getDefault(), new Date(0));
   }
 }
-
