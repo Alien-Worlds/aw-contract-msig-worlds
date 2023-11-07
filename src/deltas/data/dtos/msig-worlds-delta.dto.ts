@@ -27,7 +27,7 @@ export type DataRawType =
 
 export type MsigWorldsDeltaMongoModel = {
   _id?: MongoDB.ObjectId;
-  block_number?: MongoDB.Long;
+  block_num?: MongoDB.Long;
   code?: string;
   scope?: string;
   table?: string;
@@ -41,7 +41,7 @@ export type MsigWorldsDeltaMongoModel = {
 
 export type MsigWorldsDeltaRawModel = {
   block_timestamp: Date;
-  block_number: string;
+  block_num: string;
   code: string;
   scope: string;
   table: string;

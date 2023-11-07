@@ -58,7 +58,7 @@ export class MsigWorldsDeltaMongoMapper extends MongoMapper<
 
     const model: MsigWorldsDeltaMongoModel = {
       block_timestamp: entity.blockTimestamp,
-      block_number: new MongoDB.Long(entity.blockNumber),
+      block_num: new MongoDB.Long(entity.blockNumber),
       code: entity.code,
       scope: entity.scope,
       table: entity.table,
@@ -96,7 +96,7 @@ export class MsigWorldsDeltaMongoMapper extends MongoMapper<
 
     const {
       _id,
-      block_number,
+      block_num,
       code,
       scope,
       table,
@@ -108,7 +108,7 @@ export class MsigWorldsDeltaMongoMapper extends MongoMapper<
 
     return new ContractDelta<DataEntityType>(
       _id.toString(),
-      parseToBigInt(block_number),
+      parseToBigInt(block_num),
       code,
       scope,
       table,
@@ -152,7 +152,7 @@ export class MsigWorldsDeltaProcessorTaskMapper extends MapperImpl<
     }
 
     const {
-      block_number,
+      block_num,
       code,
       scope,
       table,
@@ -164,7 +164,7 @@ export class MsigWorldsDeltaProcessorTaskMapper extends MapperImpl<
 
     return new ContractDelta<DataEntityType, MsigWorldsDeltaRawModel>(
       '',
-      parseToBigInt(block_number),
+      parseToBigInt(block_num),
       code,
       scope,
       table,
