@@ -123,9 +123,9 @@ export class MsigWorldsActionMongoMapper extends MongoMapper<
 
     const model: MsigWorldsActionMongoModel = {
       block_timestamp: entity.blockTimestamp,
-      block_num: new MongoDB.Long(entity.blockNumber),
+      block_number: new MongoDB.Long(entity.blockNumber),
       global_sequence: new MongoDB.Long(entity.globalSequence),
-      recv_sequence: new MongoDB.Long(entity.receiverSequence),
+      receiver_sequence: new MongoDB.Long(entity.receiverSequence),
       trx_id: entity.transactionId,
       action: {
         name: entity.name,
@@ -201,9 +201,9 @@ export class MsigWorldsActionMongoMapper extends MongoMapper<
     const {
       _id,
       block_timestamp,
-      block_num,
+      block_number,
       global_sequence,
-      recv_sequence,
+      receiver_sequence,
       trx_id,
       action,
     } = mongoModel;
@@ -211,11 +211,11 @@ export class MsigWorldsActionMongoMapper extends MongoMapper<
     return new ContractAction<DataEntityType>(
       _id.toString(),
       block_timestamp,
-      parseToBigInt(block_num),
+      parseToBigInt(block_number),
       action.account,
       action.name,
       parseToBigInt(global_sequence),
-      parseToBigInt(recv_sequence),
+      parseToBigInt(receiver_sequence),
       trx_id,
       data
     );
@@ -288,7 +288,7 @@ export class MsigWorldsActionProcessorTaskMapper extends MapperImpl<
       account,
       name,
       block_timestamp,
-      block_num,
+      block_number,
       global_sequence,
       recv_sequence,
       transaction_id,
@@ -297,7 +297,7 @@ export class MsigWorldsActionProcessorTaskMapper extends MapperImpl<
     return new ContractAction<DataEntityType, MsigWorldsActionRawModel>(
       '',
       block_timestamp,
-      parseToBigInt(block_num),
+      parseToBigInt(block_number),
       account,
       name,
       parseToBigInt(global_sequence),
